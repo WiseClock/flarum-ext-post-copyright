@@ -1,0 +1,12 @@
+wiseclock-post-copyright:
+  forum:
+    composer:
+      authorized: 允许授权转载
+      sourced: 允许规范转载
+      paid: 允许付费转载
+      prohibited: 禁止转载
+    post:
+      authorized: 本文章允许经授权的转载
+      sourced: 本文章允许规范转载
+      paid: 本文章允许付费转载
+      prohibited: 本文章禁止转载
