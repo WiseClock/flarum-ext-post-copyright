@@ -1,0 +1,12 @@
+wiseclock-post-copyright:
+  forum:
+    composer:
+      authorized: Allow authorized repost
+      sourced: Allow sourced repost
+      paid: Allow paid repost
+      prohibited: No repost allowed
+    post:
+      authorized: Authorized reproduction allowed
+      sourced: Sourced reproduction allowed
+      paid: Paid reproduction allowed
+      prohibited: Reproduction prohibited
