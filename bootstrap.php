@@ -22,6 +22,14 @@ return function (Dispatcher $events)
             ]);
             $event->addBootstrapper('wiseclock/flarum-ext-post-copyright/main');
         }
+        else if ($event->isAdmin())
+        {
+            $event->addAssets([
+                __DIR__.'/js/admin/dist/extension.js',
+                __DIR__.'/less/post-copyright-settings.less',
+            ]);
+            $event->addBootstrapper('wiseclock/flarum-ext-post-copyright/main');
+        }
     });
 
     $events->listen(PostWillBeSaved::class, function (PostWillBeSaved $event)
@@ -29,8 +37,9 @@ return function (Dispatcher $events)
         if (isset($event->data['attributes']['copyright']))
         {
             $tmp = $event->data['attributes']['copyright'];
-            if (in_array($tmp, array('authorized', 'sourced', 'paid', 'prohibited')))
-                $event->post->copyright = $tmp;
+            // if (in_array($tmp, array('authorized', 'sourced', 'paid', 'prohibited', 'none')))
+            // todo: check valid
+            $event->post->copyright = $tmp;
         }
     });
 
@@ -41,6 +50,8 @@ return function (Dispatcher $events)
             $event->attributes['copyright'] = $event->model->copyright;
         }
     });
+
+    $events->subscribe(Listeners\LoadSettingsFromDatabase::class);
 
     $events->listen(ConfigureLocales::class, function (ConfigureLocales $event)
     {

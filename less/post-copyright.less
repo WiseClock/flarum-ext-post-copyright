@@ -8,6 +8,23 @@
     cursor: default;
 }
 
+.Dropdown-primary > span.Select > select.FormControl
+{
+    background-color: @primary-color;
+    color: #fff;
+    font-weight: bold;
+    &:hover,
+    &:focus,
+    &.focus
+    {
+        background-color: darken(fadein(@primary-color, 5%), 5%);
+    }
+    +i.Select-caret
+    {
+        color: #fff;
+    }
+}
+
 .Copyright-wrapper:before
 {
     .fa();
