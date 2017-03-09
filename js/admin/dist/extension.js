@@ -87,19 +87,6 @@ System.register('wiseclock/flarum-ext-post-copyright/components/PostCopyrightSet
                             value: this.setting('wiseclock.post-copyright.addition')(),
                             oninput: m.withAttr('value', this.setting('wiseclock.post-copyright.addition'))
                         })])])];
-                        /*
-                        return (
-                            <fieldset>
-                                <legend></legend>
-                            </fieldset>
-                            <div className="Form-group">
-                                <label htmlFor="client_id">{app.translator.trans('chin-colorful-logo.admin.settings.image_label')}</label>
-                                <input type="text" className="FormControl" bidi={this.setting('chin.colorful-logo.imageUrl')}></input>
-                                  <label htmlFor="client_id">{app.translator.trans('chin-colorful-logo.admin.settings.imageDev_label')}</label>
-                                <input type="text" className="FormControl" bidi={this.setting('chin.colorful-logo.imageUrl_development')}></input>
-                            </div>
-                        );
-                        */
                     }
                 }]);
                 return PostCopyrightSettingsModal;
