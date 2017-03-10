@@ -13,10 +13,16 @@ wiseclock-post-copyright:
       prohibited: 本文章禁止转载
   admin:
     settings:
-      title: 设置
+      title: 帖子版权设置
       ui:
         title: 界面
         primary_color: 使用突出色调版权下拉框
+        discussions_only: 不对回帖设置版权
+        copyright: 版权行前缀
+        align_right: 版权行居右对齐
+      edit:
+        title: 修改
+        allow_trespass: 允许编辑他人帖子时修改其版权
       defaults:
         title: 默认版权开关
         help: 开关自带的版权列表

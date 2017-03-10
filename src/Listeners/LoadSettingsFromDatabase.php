@@ -14,7 +14,10 @@ class LoadSettingsFromDatabase
         'defaults',
         'addition',
         'primary_color',
-        'only_discussions',
+        'icon',
+        'align_right',
+        'discussions_only',
+        'allow_trespass',
     ];
 
     public function __construct(SettingsRepositoryInterface $settings)
@@ -29,10 +32,13 @@ class LoadSettingsFromDatabase
 
     public function prepareApiAttributes(PrepareApiAttributes $event)
     {
-        foreach ($this->fields as $field)
+        if ($event->isSerializer(ForumSerializer::class))
         {
-            $k = 'wiseclock.post-copyright.' . $field;
-            $event->attributes[$k] = $this->settings->get($k);
+            foreach ($this->fields as $field)
+            {
+                $k = 'wiseclock.post-copyright.' . $field;
+                $event->attributes[$k] = $this->settings->get($k);
+            }
         }
     }
 }

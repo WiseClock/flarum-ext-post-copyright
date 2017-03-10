@@ -53,10 +53,22 @@ System.register('wiseclock/flarum-ext-post-copyright/components/PostCopyrightSet
                     value: function form() {
                         var _this = this;
 
-                        return [m('div', { className: 'Form-group' }, [m('fieldset', { className: 'WiseClockPostCopyright-default-ui' }, [m('legend', {}, app.translator.trans('wiseclock-post-copyright.admin.settings.ui.title')), Switch.component({
+                        return [m('div', { className: 'WiseClockPostCopyright' }, [m('fieldset', { className: 'WiseClockPostCopyright-default-ui' }, [m('legend', {}, app.translator.trans('wiseclock-post-copyright.admin.settings.ui.title')), Switch.component({
                             state: JSON.parse(this.setting('wiseclock.post-copyright.primary_color', 0)()),
                             onchange: this.setting('wiseclock.post-copyright.primary_color'),
                             children: app.translator.trans('wiseclock-post-copyright.admin.settings.ui.primary_color')
+                        }), Switch.component({
+                            state: JSON.parse(this.setting('wiseclock.post-copyright.discussions_only', 0)()),
+                            onchange: this.setting('wiseclock.post-copyright.discussions_only'),
+                            children: app.translator.trans('wiseclock-post-copyright.admin.settings.ui.discussions_only')
+                        }), Switch.component({
+                            state: JSON.parse(this.setting('wiseclock.post-copyright.align_right', 0)()),
+                            onchange: this.setting('wiseclock.post-copyright.align_right'),
+                            children: app.translator.trans('wiseclock-post-copyright.admin.settings.ui.align_right')
+                        }), m('label', {}, app.translator.trans('wiseclock-post-copyright.admin.settings.ui.copyright')), m('input', { className: 'FormControl', bidi: this.setting('wiseclock.post-copyright.icon', '© ') })]), m('fieldset', { className: 'WiseClockPostCopyright-default-edit' }, [m('legend', {}, app.translator.trans('wiseclock-post-copyright.admin.settings.edit.title')), Switch.component({
+                            state: JSON.parse(this.setting('wiseclock.post-copyright.allow_trespass', 0)()),
+                            onchange: this.setting('wiseclock.post-copyright.allow_trespass'),
+                            children: app.translator.trans('wiseclock-post-copyright.admin.settings.edit.allow_trespass')
                         })]), m('fieldset', { className: 'WiseClockPostCopyright-default-switch' }, [m('legend', {}, app.translator.trans('wiseclock-post-copyright.admin.settings.defaults.title')), m('div', { className: 'helpText' }, app.translator.trans('wiseclock-post-copyright.admin.settings.defaults.help')), Switch.component({
                             state: this.getDefaults(0),
                             onchange: function onchange(value) {

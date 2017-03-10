@@ -3,7 +3,6 @@
 namespace WiseClock\PostCopyright;
 
 use DirectoryIterator;
-use Flarum\Event\PostWillBeSaved;
 use Flarum\Event\PrepareApiAttributes;
 use Illuminate\Contracts\Events\Dispatcher;
 use Flarum\Event\ConfigureClientView;
@@ -32,16 +31,7 @@ return function (Dispatcher $events)
         }
     });
 
-    $events->listen(PostWillBeSaved::class, function (PostWillBeSaved $event)
-    {
-        if (isset($event->data['attributes']['copyright']))
-        {
-            $tmp = $event->data['attributes']['copyright'];
-            // if (in_array($tmp, array('authorized', 'sourced', 'paid', 'prohibited', 'none')))
-            // todo: check valid
-            $event->post->copyright = $tmp;
-        }
-    });
+    $events->subscribe(Listeners\PostWillBeSavedListener::class);
 
     $events->listen(PrepareApiAttributes::class, function (PrepareApiAttributes $event)
     {
