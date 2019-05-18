@@ -2,11 +2,11 @@
 
 namespace WiseClock\PostCopyright\Listeners;
 
-use Flarum\Event\PostWillBeSaved;
+use Flarum\Post\Event\Saving;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Contracts\Events\Dispatcher;
 
-class PostWillBeSavedListener
+class SavingListener
 {
     protected $settings;
 
@@ -17,10 +17,10 @@ class PostWillBeSavedListener
 
     public function subscribe(Dispatcher $events)
     {
-        $events->listen(PostWillBeSaved::class, [$this, 'postWillBeSaved']);
+        $events->listen(Saving::class, [$this, 'postWillBeSaved']);
     }
 
-    public function postWillBeSaved(PostWillBeSaved $event)
+    public function postWillBeSaved(Saving $event)
     {
         $allowSetCopyright = true;
         $allowTrespass = false;

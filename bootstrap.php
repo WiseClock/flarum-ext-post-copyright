@@ -3,7 +3,7 @@
 namespace WiseClock\PostCopyright;
 
 use DirectoryIterator;
-use Flarum\Event\PrepareApiAttributes;
+use Flarum\Api\Event\Serializing;
 use Illuminate\Contracts\Events\Dispatcher;
 use Flarum\Event\ConfigureClientView;
 use Flarum\Api\Serializer\PostSerializer;
@@ -31,9 +31,9 @@ return function (Dispatcher $events)
         }
     });
 
-    $events->subscribe(Listeners\PostWillBeSavedListener::class);
+    $events->subscribe(Listeners\SavingListener::class);
 
-    $events->listen(PrepareApiAttributes::class, function (PrepareApiAttributes $event)
+    $events->listen(Serializing::class, function (Serializing $event)
     {
         if ($event->isSerializer(PostSerializer::class))
         {
