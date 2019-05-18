@@ -24,8 +24,8 @@ class SavingListener
     {
         $allowSetCopyright = true;
         $allowTrespass = false;
-        if ($this->settings->get('wiseclock.post-copyright.allow_trespass') !== null)
-            $allowTrespass = boolval($this->settings->get('wiseclock.post-copyright.allow_trespass'));
+        if ($this->settings->get('jc-proplus.post-copyright.allow_trespass') !== null)
+            $allowTrespass = boolval($this->settings->get('jc-proplus.post-copyright.allow_trespass'));
         $postUserId = $event->post['attributes']['user_id'];
         if (isset($event->post['attributes']['edit_user_id']))
         {

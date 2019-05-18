@@ -36,7 +36,7 @@ class LoadSettingsFromDatabase
         {
             foreach ($this->fields as $field)
             {
-                $k = 'wiseclock.post-copyright.' . $field;
+                $k = 'jc-proplus.post-copyright.' . $field;
                 $event->attributes[$k] = $this->settings->get($k);
             }
         }
