@@ -2,7 +2,7 @@ var flarum = require('flarum-gulp');
 
 flarum({
   modules: {
-    'wiseclock/flarum-ext-post-copyright': [
+    'jc-proplus/post-copyright': [
       'src/**/*.js'
     ]
   }

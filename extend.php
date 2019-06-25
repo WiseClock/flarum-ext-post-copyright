@@ -19,7 +19,7 @@ return function (Dispatcher $events)
                 __DIR__.'/js/forum/dist/extension.js',
                 __DIR__.'/less/post-copyright.less',
             ]);
-            $event->addBootstrapper('wiseclock/flarum-ext-post-copyright/main');
+            $event->addBootstrapper('jc-proplus/post-copyright/main');
         }
         else if ($event->isAdmin())
         {
@@ -27,7 +27,7 @@ return function (Dispatcher $events)
                 __DIR__.'/js/admin/dist/extension.js',
                 __DIR__.'/less/post-copyright-settings.less',
             ]);
-            $event->addBootstrapper('wiseclock/flarum-ext-post-copyright/main');
+            $event->addBootstrapper('jc-proplus/post-copyright/main');
         }
     });
 

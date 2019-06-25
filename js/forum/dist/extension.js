@@ -1,4 +1,4 @@
-System.register('wiseclock/flarum-ext-post-copyright/main', ['flarum/extend', 'flarum/app', 'flarum/models/Post', 'flarum/Model', 'flarum/components/HeaderPrimary', 'flarum/components/DiscussionPage', 'flarum/components/CommentPost', 'flarum/components/DiscussionComposer', 'flarum/components/EditPostComposer', 'flarum/components/ReplyComposer', 'flarum/components/TextEditor', 'flarum/components/Select'], function (_export) {
+System.register('jc-proplus/post-copyright/main', ['flarum/extend', 'flarum/app', 'flarum/models/Post', 'flarum/Model', 'flarum/components/HeaderPrimary', 'flarum/components/DiscussionPage', 'flarum/components/CommentPost', 'flarum/components/DiscussionComposer', 'flarum/components/EditPostComposer', 'flarum/components/ReplyComposer', 'flarum/components/TextEditor', 'flarum/components/Select'], function (_export) {
     'use strict';
 
     var extend, override, app, Post, Model, HeaderPrimary, DiscussionPage, CommentPost, DiscussionComposer, EditPostComposer, ReplyComposer, TextEditor, Select;
@@ -31,51 +31,51 @@ System.register('wiseclock/flarum-ext-post-copyright/main', ['flarum/extend', 'f
         }],
         execute: function () {
 
-            app.initializers.add('wiseclock-post-copyright', function () {
+            app.initializers.add('jc-proplus-post-copyright', function () {
                 Post.prototype.copyright = Model.attribute('copyright');
 
                 function getDefaults(index) {
-                    var dbValString = app.forum.attribute('wiseclock.post-copyright.defaults');
+                    var dbValString = app.forum.attribute('jc-proplus.post-copyright.defaults');
                     var dbVal;
                     if (dbValString === null) dbVal = [true, true, true, true];else dbVal = JSON.parse(dbValString);
                     return dbVal[index];
                 }
 
-                var wiseclockCopyrightOptions = {
-                    'sourced': app.translator.trans('wiseclock-post-copyright.forum.composer.sourced'),
-                    'authorized': app.translator.trans('wiseclock-post-copyright.forum.composer.authorized'),
-                    'paid': app.translator.trans('wiseclock-post-copyright.forum.composer.paid'),
-                    'prohibited': app.translator.trans('wiseclock-post-copyright.forum.composer.prohibited'),
-                    'none': app.translator.trans('wiseclock-post-copyright.forum.composer.none')
+                var WiseClockCopyrightOptions = {
+                    'sourced': app.translator.trans('jc-proplus-post-copyright.forum.composer.sourced'),
+                    'authorized': app.translator.trans('jc-proplus-post-copyright.forum.composer.authorized'),
+                    'paid': app.translator.trans('jc-proplus-post-copyright.forum.composer.paid'),
+                    'prohibited': app.translator.trans('jc-proplus-post-copyright.forum.composer.prohibited'),
+                    'none': app.translator.trans('jc-proplus-post-copyright.forum.composer.none')
                 };
-                var wiseclockCopyrightShown = {
-                    'sourced': app.translator.trans('wiseclock-post-copyright.forum.post.sourced'),
-                    'authorized': app.translator.trans('wiseclock-post-copyright.forum.post.authorized'),
-                    'paid': app.translator.trans('wiseclock-post-copyright.forum.post.paid'),
-                    'prohibited': app.translator.trans('wiseclock-post-copyright.forum.post.prohibited')
+                var WiseClockCopyrightShown = {
+                    'sourced': app.translator.trans('jc-proplus-post-copyright.forum.post.sourced'),
+                    'authorized': app.translator.trans('jc-proplus-post-copyright.forum.post.authorized'),
+                    'paid': app.translator.trans('jc-proplus-post-copyright.forum.post.paid'),
+                    'prohibited': app.translator.trans('jc-proplus-post-copyright.forum.post.prohibited')
                 };
 
-                var wiseclockCopyrightAvailableOptions = {};
-                var wiseclockCopyrightAvailableShown = {};
-                var wiseclockCopyrightPrimaryColor = false;
-                var wiseclockCopyrightAlignRight = false;
-                var wiseclockCopyrightDiscussionsOnly = false;
-                var wiseclockCopyrightAllowTrespass = false;
-                var wiseclockCopyrightIcon = '© ';
+                var WiseClockCopyrightAvailableOptions = {};
+                var WiseClockCopyrightAvailableShown = {};
+                var WiseClockCopyrightPrimaryColor = false;
+                var WiseClockCopyrightAlignRight = false;
+                var WiseClockCopyrightDiscussionsOnly = false;
+                var WiseClockCopyrightAllowTrespass = false;
+                var WiseClockCopyrightIcon = '© ';
 
                 extend(HeaderPrimary.prototype, 'init', function () {
-                    if (app.forum.attribute('wiseclock.post-copyright.primary_color') !== null) wiseclockCopyrightPrimaryColor = JSON.parse(app.forum.attribute('wiseclock.post-copyright.primary_color'));
+                    if (app.forum.attribute('jc-proplus.post-copyright.primary_color') !== null) WiseClockCopyrightPrimaryColor = JSON.parse(app.forum.attribute('jc-proplus.post-copyright.primary_color'));
 
-                    if (app.forum.attribute('wiseclock.post-copyright.discussions_only') !== null) wiseclockCopyrightDiscussionsOnly = JSON.parse(app.forum.attribute('wiseclock.post-copyright.discussions_only'));
+                    if (app.forum.attribute('jc-proplus.post-copyright.discussions_only') !== null) WiseClockCopyrightDiscussionsOnly = JSON.parse(app.forum.attribute('jc-proplus.post-copyright.discussions_only'));
 
-                    if (app.forum.attribute('wiseclock.post-copyright.align_right') !== null) wiseclockCopyrightAlignRight = JSON.parse(app.forum.attribute('wiseclock.post-copyright.align_right'));
+                    if (app.forum.attribute('jc-proplus.post-copyright.align_right') !== null) WiseClockCopyrightAlignRight = JSON.parse(app.forum.attribute('jc-proplus.post-copyright.align_right'));
 
-                    if (app.forum.attribute('wiseclock.post-copyright.icon') !== null) wiseclockCopyrightIcon = app.forum.attribute('wiseclock.post-copyright.icon');
+                    if (app.forum.attribute('jc-proplus.post-copyright.icon') !== null) WiseClockCopyrightIcon = app.forum.attribute('jc-proplus.post-copyright.icon');
 
-                    if (app.forum.attribute('wiseclock.post-copyright.allow_trespass') !== null) wiseclockCopyrightAllowTrespass = JSON.parse(app.forum.attribute('wiseclock.post-copyright.allow_trespass'));
+                    if (app.forum.attribute('jc-proplus.post-copyright.allow_trespass') !== null) WiseClockCopyrightAllowTrespass = JSON.parse(app.forum.attribute('jc-proplus.post-copyright.allow_trespass'));
 
-                    if (app.forum.attribute('wiseclock.post-copyright.addition') !== null) {
-                        var additions = app.forum.attribute('wiseclock.post-copyright.addition');
+                    if (app.forum.attribute('jc-proplus.post-copyright.addition') !== null) {
+                        var additions = app.forum.attribute('jc-proplus.post-copyright.addition');
                         var additionLines = additions.match(/[^\r\n]+/g);
                         additionLines.forEach(function (element, index) {
                             var optionComponents = element.match(/([^\\\][^,]|\\,)+/g);
@@ -83,17 +83,17 @@ System.register('wiseclock/flarum-ext-post-copyright/main', ['flarum/extend', 'f
                                 var optionKey = optionComponents[0];
                                 var optionMenu = optionComponents[1];
                                 var optionUI = optionComponents[2];
-                                wiseclockCopyrightAvailableOptions[optionKey] = optionMenu;
-                                wiseclockCopyrightAvailableShown[optionKey] = optionUI;
+                                WiseClockCopyrightAvailableOptions[optionKey] = optionMenu;
+                                WiseClockCopyrightAvailableShown[optionKey] = optionUI;
                             }
                         });
                     }
 
-                    var optionKeys = Object.keys(wiseclockCopyrightOptions);
+                    var optionKeys = Object.keys(WiseClockCopyrightOptions);
                     optionKeys.forEach(function (key, index) {
-                        if ((index >= 4 || getDefaults(index)) && !wiseclockCopyrightAvailableOptions.hasOwnProperty(key)) {
-                            wiseclockCopyrightAvailableOptions[key] = wiseclockCopyrightOptions[key];
-                            if (key != 'none') wiseclockCopyrightAvailableShown[key] = wiseclockCopyrightShown[key];
+                        if ((index >= 4 || getDefaults(index)) && !WiseClockCopyrightAvailableOptions.hasOwnProperty(key)) {
+                            jc-proplusCopyrightAvailableOptions[key] = WiseClockCopyrightOptions[key];
+                            if (key != 'none') WiseClockCopyrightAvailableShown[key] = WiseClockCopyrightShown[key];
                         }
                     });
                 });
@@ -101,15 +101,15 @@ System.register('wiseclock/flarum-ext-post-copyright/main', ['flarum/extend', 'f
                 extend(DiscussionComposer.prototype, 'init', function (items) {
                     var _editor = this.editor;
                     _editor.props.copyright = {};
-                    _editor.props.copyright.options = wiseclockCopyrightAvailableOptions;
-                    _editor.props.copyright.value = m.prop(Object.keys(wiseclockCopyrightAvailableOptions)[0]);
+                    _editor.props.copyright.options = WiseClockCopyrightAvailableOptions;
+                    _editor.props.copyright.value = m.prop(Object.keys(WiseClockCopyrightAvailableOptions)[0]);
                 });
                 extend(EditPostComposer.prototype, 'init', function (items) {
                     var _editor = this.editor;
                     _editor.props.copyright = {};
-                    _editor.props.copyright.options = wiseclockCopyrightAvailableOptions;
+                    _editor.props.copyright.options = WiseClockCopyrightAvailableOptions;
                     var copyrightKey = this.props.post.data.attributes.copyright;
-                    if (!wiseclockCopyrightAvailableOptions.hasOwnProperty(copyrightKey)) copyrightKey = Object.keys(wiseclockCopyrightAvailableOptions)[0];
+                    if (!WiseClockCopyrightAvailableOptions.hasOwnProperty(copyrightKey)) copyrightKey = Object.keys(WiseClockCopyrightAvailableOptions)[0];
                     _editor.props.copyright.value = m.prop(copyrightKey);
 
                     if (app.current instanceof DiscussionPage) {
@@ -118,13 +118,13 @@ System.register('wiseclock/flarum-ext-post-copyright/main', ['flarum/extend', 'f
                             var startPostId = discussionStartPost.id;
                             var currentPostId = this.props.post.id();
                             var isEditingStartPost = startPostId === currentPostId;
-                            if (wiseclockCopyrightDiscussionsOnly && !isEditingStartPost) _editor.props.copyright.hidden = true;
+                            if (WiseClockCopyrightDiscussionsOnly && !isEditingStartPost) _editor.props.copyright.hidden = true;
                         }
                     }
 
                     var currentUserId = app.session.user.id();
                     var currentPostUserId = this.props.post.data.relationships.user.data.id;
-                    if (!wiseclockCopyrightAllowTrespass && currentUserId != currentPostUserId) _editor.props.copyright.hidden = true;
+                    if (!WiseClockCopyrightAllowTrespass && currentUserId != currentPostUserId) _editor.props.copyright.hidden = true;
                 });
 
                 extend(EditPostComposer.prototype, 'data', function (data) {
@@ -148,15 +148,15 @@ System.register('wiseclock/flarum-ext-post-copyright/main', ['flarum/extend', 'f
                                 var startPostId = discussionStartPost.id;
                                 var currentPostId = this.props.post.id();
                                 var isEditingStartPost = startPostId === currentPostId;
-                                if (wiseclockCopyrightDiscussionsOnly && !isEditingStartPost) hidden = true;
+                                if (WiseClockCopyrightDiscussionsOnly && !isEditingStartPost) hidden = true;
                             }
                         }
 
-                        if (hidden || copyrightKey == 'none' || !wiseclockCopyrightAvailableShown.hasOwnProperty(copyrightKey)) return;
-                        var copyrightString = wiseclockCopyrightAvailableShown[copyrightKey];
+                        if (hidden || copyrightKey == 'none' || !WiseClockCopyrightAvailableShown.hasOwnProperty(copyrightKey)) return;
+                        var copyrightString = WiseClockCopyrightAvailableShown[copyrightKey];
                         var extraClass = '';
-                        if (wiseclockCopyrightAlignRight) extraClass = ' Copyright-wrapper-right';
-                        list.push(m('div.Copyright-wrapper' + extraClass, m.trust(wiseclockCopyrightIcon + copyrightString)));
+                        if (WiseClockCopyrightAlignRight) extraClass = ' Copyright-wrapper-right';
+                        list.push(m('div.Copyright-wrapper' + extraClass, m.trust(WiseClockCopyrightIcon + copyrightString)));
                     }
                 });
 
@@ -166,10 +166,10 @@ System.register('wiseclock/flarum-ext-post-copyright/main', ['flarum/extend', 'f
 
                     if (!_editor.props.copyright) {
                         _editor.props.copyright = {};
-                        _editor.props.copyright.options = wiseclockCopyrightAvailableOptions;
+                        _editor.props.copyright.options = WiseClockCopyrightAvailableOptions;
                         _editor.props.copyright.value = m.prop('none');
 
-                        if (wiseclockCopyrightDiscussionsOnly) _editor.props.copyright.hidden = true;
+                        if (jc-proplusCopyrightDiscussionsOnly) _editor.props.copyright.hidden = true;
                     }
 
                     if (_editor.props.copyright.hidden) return;
@@ -177,11 +177,11 @@ System.register('wiseclock/flarum-ext-post-copyright/main', ['flarum/extend', 'f
                     var dropdown = Select.component({
                         options: _editor.props.copyright.options,
                         onchange: _editor.props.copyright.value,
-                        value: _editor.props.copyright.value() || Object.keys(wiseclockCopyrightAvailableOptions)[0]
+                        value: _editor.props.copyright.value() || Object.keys(WiseClockCopyrightAvailableOptions)[0]
                     });
 
-                    var extraClass = wiseclockCopyrightPrimaryColor ? ' Dropdown-primary' : '';
-                    items.add('wiseclock-post-copyright-selector' + extraClass, dropdown, 0);
+                    var extraClass = WiseClockCopyrightPrimaryColor ? ' Dropdown-primary' : '';
+                    items.add('jc-proplus-post-copyright-selector' + extraClass, dropdown, 0);
                 });
             });
         }

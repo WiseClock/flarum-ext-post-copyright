@@ -1,4 +1,4 @@
-System.register('wiseclock/flarum-ext-post-copyright/components/PostCopyrightSettingsModal', ['flarum/components/SettingsModal', 'flarum/components/Switch', 'flarum/app'], function (_export) {
+System.register('jc-proplus/post-copyright/components/PostCopyrightSettingsModal', ['flarum/components/SettingsModal', 'flarum/components/Switch', 'flarum/app'], function (_export) {
     'use strict';
 
     var SettingsModal, Switch, app, PostCopyrightSettingsModal;
@@ -27,12 +27,12 @@ System.register('wiseclock/flarum-ext-post-copyright/components/PostCopyrightSet
                 }, {
                     key: 'title',
                     value: function title() {
-                        return app.translator.trans('wiseclock-post-copyright.admin.settings.title');
+                        return app.translator.trans('jc-proplus-post-copyright.admin.settings.title');
                     }
                 }, {
                     key: 'getStored',
                     value: function getStored() {
-                        var values = this.setting('wiseclock.post-copyright.defaults', '[true, true, true, true]')();
+                        var values = this.setting('jc-proplus.post-copyright.defaults', '[true, true, true, true]')();
                         return JSON.parse(values);
                     }
                 }, {
@@ -46,16 +46,16 @@ System.register('wiseclock/flarum-ext-post-copyright/components/PostCopyrightSet
                         var values = this.getStored();
                         values[index] = value;
                         var valueString = JSON.stringify(values);
-                        this.setting('wiseclock.post-copyright.defaults')(valueString);
+                        this.setting('jc-proplus.post-copyright.defaults')(valueString);
                     }
                 }, {
                     key: 'form',
                     value: function form() {
                         var _this = this;
 
-                        return [m('div', { className: 'WiseClockPostCopyright' }, [m('fieldset', { className: 'WiseClockPostCopyright-default-ui' }, [m('legend', {}, app.translator.trans('wiseclock-post-copyright.admin.settings.ui.title')), Switch.component({
-                            state: JSON.parse(this.setting('wiseclock.post-copyright.primary_color', 0)()),
-                            onchange: this.setting('wiseclock.post-copyright.primary_color'),
+                        return [m('div', { className: 'WiseClockPostCopyright' }, [m('fieldset', { className: 'WiseClockPostCopyright-default-ui' }, [m('legend', {}, app.translator.trans('jc-proplus-post-copyright.admin.settings.ui.title')), Switch.component({
+                            state: JSON.parse(this.setting('jc-proplus.post-copyright.primary_color', 0)()),
+                            onchange: this.setting('jc-proplus.post-copyright.primary_color'),
                             children: app.translator.trans('wiseclock-post-copyright.admin.settings.ui.primary_color')
                         }), Switch.component({
                             state: JSON.parse(this.setting('wiseclock.post-copyright.discussions_only', 0)()),
@@ -63,41 +63,41 @@ System.register('wiseclock/flarum-ext-post-copyright/components/PostCopyrightSet
                             children: app.translator.trans('wiseclock-post-copyright.admin.settings.ui.discussions_only')
                         }), Switch.component({
                             state: JSON.parse(this.setting('wiseclock.post-copyright.align_right', 0)()),
-                            onchange: this.setting('wiseclock.post-copyright.align_right'),
-                            children: app.translator.trans('wiseclock-post-copyright.admin.settings.ui.align_right')
-                        }), m('label', {}, app.translator.trans('wiseclock-post-copyright.admin.settings.ui.copyright')), m('input', { className: 'FormControl', bidi: this.setting('wiseclock.post-copyright.icon', '© ') })]), m('fieldset', { className: 'WiseClockPostCopyright-default-edit' }, [m('legend', {}, app.translator.trans('wiseclock-post-copyright.admin.settings.edit.title')), Switch.component({
-                            state: JSON.parse(this.setting('wiseclock.post-copyright.allow_trespass', 0)()),
-                            onchange: this.setting('wiseclock.post-copyright.allow_trespass'),
-                            children: app.translator.trans('wiseclock-post-copyright.admin.settings.edit.allow_trespass')
-                        })]), m('fieldset', { className: 'WiseClockPostCopyright-default-switch' }, [m('legend', {}, app.translator.trans('wiseclock-post-copyright.admin.settings.defaults.title')), m('div', { className: 'helpText' }, app.translator.trans('wiseclock-post-copyright.admin.settings.defaults.help')), Switch.component({
+                            onchange: this.setting('jc-proplus.post-copyright.align_right'),
+                            children: app.translator.trans('jc-proplus-post-copyright.admin.settings.ui.align_right')
+                        }), m('label', {}, app.translator.trans('jc-proplus-post-copyright.admin.settings.ui.copyright')), m('input', { className: 'FormControl', bidi: this.setting('jc-proplus.post-copyright.icon', '© ') })]), m('fieldset', { className: 'WiseClockPostCopyright-default-edit' }, [m('legend', {}, app.translator.trans('jc-proplus-post-copyright.admin.settings.edit.title')), Switch.component({
+                            state: JSON.parse(this.setting('jc-proplus.post-copyright.allow_trespass', 0)()),
+                            onchange: this.setting('jc-proplus.post-copyright.allow_trespass'),
+                            children: app.translator.trans('jc-proplsu-post-copyright.admin.settings.edit.allow_trespass')
+                        })]), m('fieldset', { className: 'WiseClockPostCopyright-default-switch' }, [m('legend', {}, app.translator.trans('jc-proplus-post-copyright.admin.settings.defaults.title')), m('div', { className: 'helpText' }, app.translator.trans('jc-proplsu-post-copyright.admin.settings.defaults.help')), Switch.component({
                             state: this.getDefaults(0),
                             onchange: function onchange(value) {
                                 _this.setDefaults(0, value);
                             },
-                            children: app.translator.trans('wiseclock-post-copyright.admin.settings.defaults.authorized')
+                            children: app.translator.trans('jc-proplus-post-copyright.admin.settings.defaults.authorized')
                         }), Switch.component({
                             state: this.getDefaults(1),
                             onchange: function onchange(value) {
                                 _this.setDefaults(1, value);
                             },
-                            children: app.translator.trans('wiseclock-post-copyright.admin.settings.defaults.sourced')
+                            children: app.translator.trans('jc-proplus-post-copyright.admin.settings.defaults.sourced')
                         }), Switch.component({
                             state: this.getDefaults(2),
                             onchange: function onchange(value) {
                                 _this.setDefaults(2, value);
                             },
-                            children: app.translator.trans('wiseclock-post-copyright.admin.settings.defaults.paid')
+                            children: app.translator.trans('jc-proplus-post-copyright.admin.settings.defaults.paid')
                         }), Switch.component({
                             state: this.getDefaults(3),
                             onchange: function onchange(value) {
                                 _this.setDefaults(3, value);
                             },
-                            children: app.translator.trans('wiseclock-post-copyright.admin.settings.defaults.prohibited')
-                        })]), m('fieldset', { className: 'WiseClockPostCopyright-addition' }, [m('legend', {}, app.translator.trans('wiseclock-post-copyright.admin.settings.addition.title')), m('div', { className: 'helpText' }, app.translator.trans('wiseclock-post-copyright.admin.settings.addition.help')), m('pre', 'mit,MIT License,You have to follow <a href="https://opensource.org/licenses/MIT">The MIT License</a> in order to reproduce this post.'), m('div', { className: 'helpText' }, app.translator.trans('wiseclock-post-copyright.admin.settings.addition.notes')), m('textarea', {
+                            children: app.translator.trans('jc-proplus-post-copyright.admin.settings.defaults.prohibited')
+                        })]), m('fieldset', { className: 'WiseClockPostCopyright-addition' }, [m('legend', {}, app.translator.trans('jc-proplus-post-copyright.admin.settings.addition.title')), m('div', { className: 'helpText' }, app.translator.trans('jc-proplus-post-copyright.admin.settings.addition.help')), m('pre', 'mit,MIT License,You have to follow <a href="https://opensource.org/licenses/MIT">The MIT License</a> in order to reproduce this post.'), m('div', { className: 'helpText' }, app.translator.trans('jc-proplus-post-copyright.admin.settings.addition.notes')), m('textarea', {
                             className: 'FormControl',
                             rows: 6,
-                            value: this.setting('wiseclock.post-copyright.addition')(),
-                            oninput: m.withAttr('value', this.setting('wiseclock.post-copyright.addition'))
+                            value: this.setting('jc-proplus.post-copyright.addition')(),
+                            oninput: m.withAttr('value', this.setting('jc-proplus.post-copyright.addition'))
                         })])])];
                     }
                 }]);
@@ -108,7 +108,7 @@ System.register('wiseclock/flarum-ext-post-copyright/components/PostCopyrightSet
         }
     };
 });;
-System.register('wiseclock/flarum-ext-post-copyright/main', ['flarum/extend', 'flarum/app', 'wiseclock/flarum-ext-post-copyright/components/PostCopyrightSettingsModal'], function (_export) {
+System.register('jc-proplus/post-copyright/main', ['flarum/extend', 'flarum/app', 'jc-proplus/post-copyright/components/PostCopyrightSettingsModal'], function (_export) {
     'use strict';
 
     var extend, app, PostCopyrightSettingsModal;
@@ -122,8 +122,8 @@ System.register('wiseclock/flarum-ext-post-copyright/main', ['flarum/extend', 'f
         }],
         execute: function () {
 
-            app.initializers.add('wiseclock-post-copyright', function () {
-                app.extensionSettings['wiseclock-post-copyright'] = function () {
+            app.initializers.add('jc-proplus-post-copyright', function () {
+                app.extensionSettings['jc-proplus-post-copyright'] = function () {
                     return app.modal.show(new PostCopyrightSettingsModal());
                 };
             });
